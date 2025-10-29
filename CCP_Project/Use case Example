@@ -1,0 +1,129 @@
+/*
+ * Urdu Keyword Library Example
+ * یوٹیلیٹی لائبریری کا استعمال
+ * 
+ * This program demonstrates how to use the Urdu keyword library
+ * for making C programming more accessible for Urdu speakers.
+ */
+
+#include <urdu.h>
+
+int main() {
+    // Display program header
+    likhde_line("========================================");
+    likhde_line("   Urdu Keyword Library Examples");
+    likhde_line("Utility Library Examples");
+    likhde_line("========================================\n");
+    
+    // Example 1: Getting user information
+    likhde_line("Example 1: User Information");
+    likhde_line("--------------------------------------\n");
+    
+    char name[50];
+    parhle_str("Enter your name: ", name, sizeof(name));
+    
+    int age = parhle("Enter your age: ");
+    
+    likhde_line("\nInformation:");
+    likhde("Name: ");
+    likhde_line(name);
+    likhde("Age: ");
+    likhde_int_line(age);
+    likhde_line("");
+    
+    // Example 2: Working with numbers
+    likhde_line("Example 2: Basic Arithmetic");
+    likhde_line("--------------------------------------\n");
+    
+    int a = parhle("Enter first number: ");
+    int b = parhle("Enter second number: ");
+    
+    likhde_line("\nCalculations:");
+    likhde_int(a);
+    likhde(" + ");
+    likhde_int(b);
+    likhde(" = ");
+    likhde_int_line(a + b);
+    
+    likhde_int(a);
+    likhde(" - ");
+    likhde_int(b);
+    likhde(" = ");
+    likhde_int_line(a - b);
+    
+    likhde_int(a);
+    likhde(" * ");
+    likhde_int(b);
+    likhde(" = ");
+    likhde_int_line(a * b);
+    
+    if (b != 0) {
+        likhde_int(a);
+        likhde(" / ");
+        likhde_int(b);
+        likhde(" = ");
+        likhde_float_line((float)a / b);
+    }
+    likhde_line("");
+    
+    // Example 3: Working with floating point numbers
+    likhde_line("Example 3: Decimal Numbers");
+    likhde_line("--------------------------------------\n");
+    
+    float price1 = parhle_float("Enter first price: ");
+    float price2 = parhle_float("Enter second price: ");
+    
+    float total = price1 + price2;
+    likhde("\nTotal price: ");
+    likhde_float_line(total);
+    likhde_line("");
+    
+    // Example 4: Simple condition example
+    likhde_line("Example 4: Conditional Check");
+    likhde_line("--------------------------------------\n");
+    
+    int score = parhle("Enter your score (0-100): ");
+    
+    likhde_line("");
+    
+    if (score >= 80) {
+        likhde_line("Excellent! Great work");
+    }
+    else if (score >= 60) {
+        likhde_line("Good job");
+    }
+    else if (score >= 40) {
+        likhde_line("Average");
+    }
+    else {
+        likhde_line("Needs improvement");
+    }
+    
+    likhde_line("");
+    
+    // Example 5: Loop demonstration
+    likhde_line("Example 5: Number Pattern");
+    likhde_line("--------------------------------------\n");
+    
+    int limit = parhle("How many numbers to show? ");
+    
+    likhde_line("\nFrom 1 to ");
+    likhde_int(limit);
+    likhde_line(":");
+    
+    for (int i = 1; i <= limit; i++) {
+        likhde_int(i);
+        if (i < limit) {
+            likhde(", ");
+        }
+    }
+    likhde_line("");
+    likhde_line("");
+    
+    // Program conclusion
+    likhde_line("========================================");
+    likhde_line("        Thank you!");
+    likhde_line("========================================\n");
+    
+    return 0;
+}
