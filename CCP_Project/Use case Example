@@ -1,129 +1,127 @@
-/*
- * Urdu Keyword Library Example
- * یوٹیلیٹی لائبریری کا استعمال
- * 
- * This program demonstrates how to use the Urdu keyword library
- * for making C programming more accessible for Urdu speakers.
- */
-
 #include <urdu.h>
+/*
+  Urdu.h helpers (Python-like Urdu keywords)
 
-int main() {
-    // Display program header
-    likhde_line("========================================");
-    likhde_line("   Urdu Keyword Library Examples");
-    likhde_line("Utility Library Examples");
-    likhde_line("========================================\n");
-    
-    // Example 1: Getting user information
-    likhde_line("Example 1: User Information");
-    likhde_line("--------------------------------------\n");
-    
-    char name[50];
-    parhle_str("Enter your name: ", name, sizeof(name));
-    
-    int age = parhle("Enter your age: ");
-    
-    likhde_line("\nInformation:");
-    likhde("Name: ");
-    likhde_line(name);
-    likhde("Age: ");
-    likhde_int_line(age);
+  Function syntax and datatypes:
+  - int parhle(const char *prompt)
+      • Prints prompt, reads an integer, returns it as int
+      • Example: int x = parhle("Number: ");
+
+  - void parhle_str(const char *prompt, char *buf, int size)
+      • Prints prompt, reads a line of text into buf (C string, null-terminated)
+      • buf must be a char array with capacity >= size; newline is trimmed
+      • Example: char name[100]; parhle_str("Name: ", name, sizeof(name));
+
+  - float parhle_float(const char *prompt)
+      • Prints prompt, reads a floating-point number, returns float
+      • Example: float f = parhle_float("Float: ");
+
+  - double parhle_double(const char *prompt)
+      • Prints prompt, reads a double-precision number, returns double
+      • Example: double d = parhle_double("Double: ");
+
+  - void likhde(const char *text)
+      • Prints text without newline
+      • Example: likhde("Hello");
+
+  - void likhde_int(int n)
+      • Prints integer without newline
+      • Example: likhde_int(42);
+
+  - void likhde_float(float n)
+      • Prints float with 2 decimal places, without newline
+      • Example: likhde_float(3.14f);
+
+  - void likhde_double(double n)
+      • Prints double with 2 decimal places, without newline
+      • Example: likhde_double(2.71828);
+
+  - void likhde_line(const char *text)
+      • Prints text followed by newline
+      • Example: likhde_line("Hello line");
+
+  - void likhde_int_line(int n)
+      • Prints integer followed by newline
+      • Example: likhde_int_line(7);
+
+  - void likhde_float_line(float n)
+      • Prints float (2 decimals) followed by newline
+      • Example: likhde_float_line(1.23f);
+
+  - Macro: jab_tak(condition)
+      • Urdu alias for C while(condition)
+      • Example: jab_tak(i > 0) { /* body */ /* }
+
+  - Macros: karo ... jab_(condition)
+      • Urdu alias for C do { ... } while (condition);
+      • Example: karo { /* body */ /* } jab_(i > 0);
+*/
+
+int main(void) {
+    char naam[100]; /* char array (C-string buffer) to store name; capacity 100 chars */
+
+    likhde_line("Assalam-o-Alaikum! Yeh Urdu-h style demo hai."); /* print greeting with newline */
+
+    int adad = parhle("Koi poora adad likho: "); /* prompt and read int → store in adad */
+    float ashari = parhle_float("Koi float likho: "); /* prompt and read float → store in ashari */
+    double baraAshari = parhle_double("Koi double likho: "); /* prompt and read double → store in baraAshari */
+    parhle_str("Apna naam likho: ", naam, sizeof(naam)); /* prompt and read string into naam buffer */
+
+    likhde_line(""); /* print empty line */
+    likhde_line("Aap ne jo diya:"); /* section title */
+
+    likhde("Naam: "); /* label without newline */
+    likhde_line(naam); /* print name with newline */
+
+    likhde("Adad: "); /* label without newline */
+    likhde_int_line(adad); /* print int with newline */
+
+    likhde("Float: "); /* label without newline */
+    likhde_float_line(ashari); /* print float (2dp) with newline */
+
+    likhde("Double (bila newline): "); /* label without newline */
+    likhde_double(baraAshari); /* print double (2dp) without newline */
+    likhde("\n"); /* manually add newline after previous print */
+
+    likhde_line(""); /* blank line */
+    likhde_line("Thori si hisaab kitab:"); /* section title */
+
+    likhde("Adad x 2 = "); /* label */
+    likhde_int_line(adad * 2); /* compute and print integer expression with newline */
+
+    likhde("Float / 2 = "); /* label */
+    likhde_float_line(ashari / 2.0f); /* compute and print float (2dp) with newline */
+
+    double jama = adad + (double)ashari + baraAshari; /* sum using double precision */
+    likhde("Teenon ka jama = "); /* label */
+    likhde_double(jama); /* print double without newline */
+    likhde("\n"); /* newline */
+
+    /* jab_tak demo: Urdu alias for while(condition) */
     likhde_line("");
-    
-    // Example 2: Working with numbers
-    likhde_line("Example 2: Basic Arithmetic");
-    likhde_line("--------------------------------------\n");
-    
-    int a = parhle("Enter first number: ");
-    int b = parhle("Enter second number: ");
-    
-    likhde_line("\nCalculations:");
-    likhde_int(a);
-    likhde(" + ");
-    likhde_int(b);
-    likhde(" = ");
-    likhde_int_line(a + b);
-    
-    likhde_int(a);
-    likhde(" - ");
-    likhde_int(b);
-    likhde(" = ");
-    likhde_int_line(a - b);
-    
-    likhde_int(a);
-    likhde(" * ");
-    likhde_int(b);
-    likhde(" = ");
-    likhde_int_line(a * b);
-    
-    if (b != 0) {
-        likhde_int(a);
-        likhde(" / ");
-        likhde_int(b);
-        likhde(" = ");
-        likhde_float_line((float)a / b);
+    likhde_line("jab_tak demo: 3 se 1 tak countdown");
+    int ginti = 3; /* int: loop counter */
+    jab_tak((ginti > 0)) { /* while (ginti > 0) */
+        likhde_int(ginti); /* print current count without newline */
+        likhde(" "); /* space */
+        ginti--; /* decrement */
     }
+    likhde("\n"); /* newline after loop output */
+
+    /* karo ... jab_(condition) demo: Urdu alias for do { } while (...) */
     likhde_line("");
-    
-    // Example 3: Working with floating point numbers
-    likhde_line("Example 3: Decimal Numbers");
-    likhde_line("--------------------------------------\n");
-    
-    float price1 = parhle_float("Enter first price: ");
-    float price2 = parhle_float("Enter second price: ");
-    
-    float total = price1 + price2;
-    likhde("\nTotal price: ");
-    likhde_float_line(total);
-    likhde_line("");
-    
-    // Example 4: Simple condition example
-    likhde_line("Example 4: Conditional Check");
-    likhde_line("--------------------------------------\n");
-    
-    int score = parhle("Enter your score (0-100): ");
-    
-    likhde_line("");
-    
-    if (score >= 80) {
-        likhde_line("Excellent! Great work");
-    }
-    else if (score >= 60) {
-        likhde_line("Good job");
-    }
-    else if (score >= 40) {
-        likhde_line("Average");
-    }
-    else {
-        likhde_line("Needs improvement");
-    }
-    
-    likhde_line("");
-    
-    // Example 5: Loop demonstration
-    likhde_line("Example 5: Number Pattern");
-    likhde_line("--------------------------------------\n");
-    
-    int limit = parhle("How many numbers to show? ");
-    
-    likhde_line("\nFrom 1 to ");
-    likhde_int(limit);
-    likhde_line(":");
-    
-    for (int i = 1; i <= limit; i++) {
-        likhde_int(i);
-        if (i < limit) {
-            likhde(", ");
-        }
-    }
-    likhde_line("");
-    likhde_line("");
-    
-    // Program conclusion
-    likhde_line("========================================");
-    likhde_line("        Thank you!");
-    likhde_line("========================================\n");
-    
-    return 0;
+    likhde_line("karo ... jab_ demo: kam az kam aik dafa chalna chahiye");
+    int num = 0; /* int: will increment and stop when >= 3 */
+    karo { /* do { */
+        likhde("num = ");
+        likhde_int(num);
+        likhde("\n");
+        num++; /* body runs at least once */
+    } jab_(num < 3); /* } while (num < 3); */
+
+    likhde_line(""); /* blank line */
+    likhde_line("Shukriya! Allah Hafiz."); /* closing message */
+
+    return 0; /* indicate successful program termination */
 }
+
