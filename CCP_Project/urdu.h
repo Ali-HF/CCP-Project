@@ -69,4 +69,10 @@ void likhde_float_line(float n) {
     printf("%.2f\n", n);
 }
 
+#define jab_tak(condition) while (condition)
+
+/* do-while Urdu aliases: usage → karo { ... } jab_(condition); */
+#define karo do
+#define jab_(condition) while (condition)
+
 #endif
