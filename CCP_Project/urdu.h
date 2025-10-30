@@ -69,6 +69,17 @@ void likhde_float_line(float n) {
     printf("%.2f\n", n);
 }
 
+/* Control flow statements */
+#define agr if
+#define warna else
+#define warna_agr else if
+
+/* Switch statement aliases */
+#define badal switch
+#define surat case
+#define warna_sab default
+#define tor break
+
 #define jab_tak(condition) while (condition)
 
 /* do-while Urdu aliases: usage → karo { ... } jab_(condition); */
