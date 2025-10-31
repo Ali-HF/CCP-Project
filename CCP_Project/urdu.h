@@ -78,12 +78,17 @@ void likhde_float_line(float n) {
 #define badal switch
 #define surat case
 #define warna_sab default
-#define tor break
+#define ruk_jao break
 
+/* Loops */
 #define jab_tak(condition) while (condition)
 
 /* do-while Urdu aliases: usage → karo { ... } jab_(condition); */
 #define karo do
 #define jab_(condition) while (condition)
 
+/* Continue statement alias */
+#define agay_chalo continue
+
 #endif
+
