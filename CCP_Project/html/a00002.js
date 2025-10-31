@@ -1,0 +1,25 @@
+var a00002 =
+[
+    [ "agay_chalo", "a00002.html#a97396184241b8f29b92e6541b912cab4", null ],
+    [ "agr", "a00002.html#a5321d6b42b8d484682dfecc0d43fa762", null ],
+    [ "badal", "a00002.html#aab86f6a3a734367b46d1acbe268fe313", null ],
+    [ "jab_", "a00002.html#ae6fad3003f26ab11d9d0cf880d7b983a", null ],
+    [ "jab_tak", "a00002.html#ad5edd31d3fafebf58ec9be240ea74662", null ],
+    [ "karo", "a00002.html#a8018ea7074df511a17efdd81686b0b76", null ],
+    [ "ruk_jao", "a00002.html#a5b4be4c24dafed60ada24945ad05f38d", null ],
+    [ "surat", "a00002.html#aa2ca25e0d90d37bfa17c312ce1a4f831", null ],
+    [ "warna", "a00002.html#a08d00316075e8ee6ee99a9c7570769bb", null ],
+    [ "warna_agr", "a00002.html#ae29f9bec247dc62be717e083e8fb9c64", null ],
+    [ "warna_sab", "a00002.html#a7c197db373c3c52bd29cfa6b6f5fc462", null ],
+    [ "likhde", "a00002.html#a6e668a10f2b538c4d8fe6bcb41e7db1a", null ],
+    [ "likhde_double", "a00002.html#a05aa8db18285058de6e16da2a082d734", null ],
+    [ "likhde_float", "a00002.html#a843ac4f19439245433d40064bffbf251", null ],
+    [ "likhde_float_line", "a00002.html#a88868c5a00ffb4cfa43a748422deb446", null ],
+    [ "likhde_int", "a00002.html#a3da357d6317352cf46e6535cdfc1069d", null ],
+    [ "likhde_int_line", "a00002.html#acc8c24a1a4180ec415c3b49d1e7a6032", null ],
+    [ "likhde_line", "a00002.html#af695e96ead6ca3c0fbe05c4c09a17d21", null ],
+    [ "parhle", "a00002.html#a577bd2cf76993a531cb615517c5ff6b1", null ],
+    [ "parhle_double", "a00002.html#a40b58cd2e195b1152f9d77414359bfdd", null ],
+    [ "parhle_float", "a00002.html#ae6b40755824518e3f9708a9f91ace841", null ],
+    [ "parhle_str", "a00002.html#a3adf8d321133d6b0c3a2ba35a92407c8", null ]
+];
