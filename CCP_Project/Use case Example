@@ -1,4 +1,7 @@
-#include <urdu.h>
+
+
+#include "urdu.h"
+
 /*
   Urdu.h helpers (Python-like Urdu keywords)
 
@@ -50,11 +53,11 @@
 
   - Macro: jab_tak(condition)
       • Urdu alias for C while(condition)
-      • Example: jab_tak(i > 0) { /* body */ /* }
+      • Example: jab_tak(i > 0) { }
 
   - Macros: karo ... jab_(condition)
       • Urdu alias for C do { ... } while (condition);
-      • Example: karo { /* body */ /* } jab_(i > 0);
+      • Example: karo { } jab_(i > 0);
 */
 
 int main(void) {
@@ -97,21 +100,23 @@ int main(void) {
     likhde_double(jama); /* print double without newline */
     likhde("\n"); /* newline */
 
-    /* jab_tak demo: Urdu alias for while(condition) */
+    /* ---------------- jab_tak demo ---------------- */
     likhde_line("");
     likhde_line("jab_tak demo: 3 se 1 tak countdown");
     int ginti = 3; /* int: loop counter */
-    jab_tak((ginti > 0)) { /* while (ginti > 0) */
+
+    jab_tak(ginti > 0) { /* while (ginti > 0) */
         likhde_int(ginti); /* print current count without newline */
         likhde(" "); /* space */
         ginti--; /* decrement */
     }
     likhde("\n"); /* newline after loop output */
 
-    /* karo ... jab_(condition) demo: Urdu alias for do { } while (...) */
+    /* ---------------- karo ... jab_ demo ---------------- */
     likhde_line("");
     likhde_line("karo ... jab_ demo: kam az kam aik dafa chalna chahiye");
     int num = 0; /* int: will increment and stop when >= 3 */
+
     karo { /* do { */
         likhde("num = ");
         likhde_int(num);
@@ -119,9 +124,58 @@ int main(void) {
         num++; /* body runs at least once */
     } jab_(num < 3); /* } while (num < 3); */
 
+    /* ---------------- agr / warna demo ---------------- */
+    likhde_line("");
+    likhde_line("agr / warna demo:");
+
+    int umar = parhle("Apni umar likho: "); /* user input */
+
+    agr (umar < 18) {
+        likhde_line("Aap abhi chhotay hain.");
+    }
+    warna_agr (umar >= 18 && umar < 60) {
+        likhde_line("Aap jawan hain!");
+    }
+    warna {
+        likhde_line("Aap buzurg hain, lekin dil se jawan!");
+    }
+
+    /* ---------------- agay_chalo demo ---------------- */
+    likhde_line("");
+    likhde_line("agay_chalo demo (continue statement):");
+
+    for (int i = 1; i <= 5; i++) {
+        agr (i == 3) {
+            likhde_line("3 skip kiya gaya!");
+            agay_chalo; /* continue */
+        }
+        likhde("Number: ");
+        likhde_int_line(i);
+    }
+
+    /* ---------------- switch demo ---------------- */
+    likhde_line("");
+    likhde_line("badal / surat demo:");
+
+    int din = parhle("1 se 3 tak koi number likho (1=Som, 2=Mangal, 3=Budh): ");
+
+    badal (din) {
+        surat 1:
+            likhde_line("Aaj Somwaar hai!");
+            ruk_jao;
+        surat 2:
+            likhde_line("Aaj Mangalwar hai!");
+            ruk_jao;
+        surat 3:
+            likhde_line("Aaj Budhwar hai!");
+            ruk_jao;
+        warna_sab:
+            likhde_line("Ghalat number!");
+            ruk_jao;
+    }
+
     likhde_line(""); /* blank line */
     likhde_line("Shukriya! Allah Hafiz."); /* closing message */
 
     return 0; /* indicate successful program termination */
 }
-
