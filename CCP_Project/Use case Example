@@ -1,6 +1,4 @@
-
-
-#include "urdu.h"
+#include <urdu.h>
 
 /*
   Urdu.h helpers (Python-like Urdu keywords)
@@ -63,36 +61,36 @@
 int main(void) {
     char naam[100]; /* char array (C-string buffer) to store name; capacity 100 chars */
 
-    likhde_line("Assalam-o-Alaikum! Yeh Urdu-h style demo hai."); /* print greeting with newline */
+    likhde_line("Assalam-o-Alaikum! Ye humen c ko urdu mein kardiya hai!!."); /* print greeting with newline */
 
-    int adad = parhle("Koi poora adad likho: "); /* prompt and read int → store in adad */
-    float ashari = parhle_float("Koi float likho: "); /* prompt and read float → store in ashari */
-    double baraAshari = parhle_double("Koi double likho: "); /* prompt and read double → store in baraAshari */
+    int adad = parhle("Koi number likho: "); /* prompt and read int → store in adad */
+    float ashari = parhle_float("Koi  ashariya likho: "); /* prompt and read float → store in ashari */
+    double baraAshari = parhle_double("ek lamba ashariya likho: "); /* prompt and read double → store in baraAshari */
     parhle_str("Apna naam likho: ", naam, sizeof(naam)); /* prompt and read string into naam buffer */
 
     likhde_line(""); /* print empty line */
-    likhde_line("Aap ne jo diya:"); /* section title */
+    likhde_line("Aap ke data ke mutabiq:"); /* section title */
 
     likhde("Naam: "); /* label without newline */
     likhde_line(naam); /* print name with newline */
 
-    likhde("Adad: "); /* label without newline */
+    likhde("number: "); /* label without newline */
     likhde_int_line(adad); /* print int with newline */
 
-    likhde("Float: "); /* label without newline */
+    likhde("ashariya: "); /* label without newline */
     likhde_float_line(ashari); /* print float (2dp) with newline */
 
-    likhde("Double (bila newline): "); /* label without newline */
+    likhde("lamba wala ashiarya: "); /* label without newline */
     likhde_double(baraAshari); /* print double (2dp) without newline */
     likhde("\n"); /* manually add newline after previous print */
 
     likhde_line(""); /* blank line */
-    likhde_line("Thori si hisaab kitab:"); /* section title */
+    likhde_line("ab kuch maths karte:"); /* section title */
 
-    likhde("Adad x 2 = "); /* label */
+    likhde("number x 2 = "); /* label */
     likhde_int_line(adad * 2); /* compute and print integer expression with newline */
 
-    likhde("Float / 2 = "); /* label */
+    likhde("ashariya / 2 = "); /* label */
     likhde_float_line(ashari / 2.0f); /* compute and print float (2dp) with newline */
 
     double jama = adad + (double)ashari + baraAshari; /* sum using double precision */
@@ -100,35 +98,34 @@ int main(void) {
     likhde_double(jama); /* print double without newline */
     likhde("\n"); /* newline */
 
-    /* ---------------- jab_tak demo ---------------- */
     likhde_line("");
-    likhde_line("jab_tak demo: 3 se 1 tak countdown");
-    int ginti = 3; /* int: loop counter */
+    likhde_line("ab while loop ka re word dekhte hain!");
+    int ginti = parhle("ye batao ke kitna lamba loop chalana? : ");
 
-    jab_tak(ginti > 0) { /* while (ginti > 0) */
-        likhde_int(ginti); /* print current count without newline */
-        likhde(" "); /* space */
-        ginti--; /* decrement */
+    jab_tak(ginti > 0) { 
+        likhde_int(ginti); 
+        likhde(" "); 
+        ginti--; 
     }
-    likhde("\n"); /* newline after loop output */
+    likhde("\n"); 
 
-    /* ---------------- karo ... jab_ demo ---------------- */
     likhde_line("");
-    likhde_line("karo ... jab_ demo: kam az kam aik dafa chalna chahiye");
-    int num = 0; /* int: will increment and stop when >= 3 */
+    likhde_line("ab bari hai do while loop ki, jo ek martaba lazmi chalta");
+    int num2 = parhle("kitna lamaba chalana? :");
+    int num = 0;
 
-    karo { /* do { */
+    karo { 
         likhde("num = ");
         likhde_int(num);
         likhde("\n");
-        num++; /* body runs at least once */
-    } jab_(num < 3); /* } while (num < 3); */
+        num++; 
+    } jab_(num < num2); 
 
-    /* ---------------- agr / warna demo ---------------- */
+    
     likhde_line("");
     likhde_line("agr / warna demo:");
 
-    int umar = parhle("Apni umar likho: "); /* user input */
+    int umar = parhle("Apni umar batao: "); 
 
     agr (umar < 18) {
         likhde_line("Aap abhi chhotay hain.");
@@ -140,42 +137,42 @@ int main(void) {
         likhde_line("Aap buzurg hain, lekin dil se jawan!");
     }
 
-    /* ---------------- agay_chalo demo ---------------- */
     likhde_line("");
-    likhde_line("agay_chalo demo (continue statement):");
+    likhde_line("continue statemnet ka demo!!");
 
     for (int i = 1; i <= 5; i++) {
         agr (i == 3) {
-            likhde_line("3 skip kiya gaya!");
-            agay_chalo; /* continue */
+            likhde_line("3 skip hogaya!!");
+            agay_chalo; 
         }
         likhde("Number: ");
         likhde_int_line(i);
     }
 
-    /* ---------------- switch demo ---------------- */
     likhde_line("");
-    likhde_line("badal / surat demo:");
+    likhde_line("switch case ke demo ki bari:");
 
-    int din = parhle("1 se 3 tak koi number likho (1=Som, 2=Mangal, 3=Budh): ");
+    int din = parhle("1 se 3 tak koi number likho , (1 = peer, 2 = mangal, 3 = budh): ");
 
     badal (din) {
         surat 1:
-            likhde_line("Aaj Somwaar hai!");
+            likhde_line("Aaj peer hai!");
             ruk_jao;
         surat 2:
-            likhde_line("Aaj Mangalwar hai!");
+            likhde_line("Aaj mangal hai!");
             ruk_jao;
         surat 3:
-            likhde_line("Aaj Budhwar hai!");
+            likhde_line("Aaj budh` hai!");
             ruk_jao;
         warna_sab:
             likhde_line("Ghalat number!");
             ruk_jao;
     }
 
-    likhde_line(""); /* blank line */
-    likhde_line("Shukriya! Allah Hafiz."); /* closing message */
+    likhde_line(""); 
+    likhde_line("Shukriya! Allah Hafiz."); 
 
-    return 0; /* indicate successful program termination */
+    return 0; 
 }
+
+
