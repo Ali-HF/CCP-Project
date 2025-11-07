@@ -1,178 +1,165 @@
 #include <urdu.h>
 
 /*
-  Urdu.h helpers (Python-like Urdu keywords)
-
-  Function syntax and datatypes:
-  - int parhle(const char *prompt)
-      • Prints prompt, reads an integer, returns it as int
-      • Example: int x = parhle("Number: ");
-
-  - void parhle_str(const char *prompt, char *buf, int size)
-      • Prints prompt, reads a line of text into buf (C string, null-terminated)
-      • buf must be a char array with capacity >= size; newline is trimmed
-      • Example: char name[100]; parhle_str("Name: ", name, sizeof(name));
-
-  - float parhle_float(const char *prompt)
-      • Prints prompt, reads a floating-point number, returns float
-      • Example: float f = parhle_float("Float: ");
-
-  - double parhle_double(const char *prompt)
-      • Prints prompt, reads a double-precision number, returns double
-      • Example: double d = parhle_double("Double: ");
-
-  - void likhde(const char *text)
-      • Prints text without newline
-      • Example: likhde("Hello");
-
-  - void likhde_int(int n)
-      • Prints integer without newline
-      • Example: likhde_int(42);
-
-  - void likhde_float(float n)
-      • Prints float with 2 decimal places, without newline
-      • Example: likhde_float(3.14f);
-
-  - void likhde_double(double n)
-      • Prints double with 2 decimal places, without newline
-      • Example: likhde_double(2.71828);
-
-  - void likhde_line(const char *text)
-      • Prints text followed by newline
-      • Example: likhde_line("Hello line");
-
-  - void likhde_int_line(int n)
-      • Prints integer followed by newline
-      • Example: likhde_int_line(7);
-
-  - void likhde_float_line(float n)
-      • Prints float (2 decimals) followed by newline
-      • Example: likhde_float_line(1.23f);
-
-  - Macro: jab_tak(condition)
-      • Urdu alias for C while(condition)
-      • Example: jab_tak(i > 0) { }
-
-  - Macros: karo ... jab_(condition)
-      • Urdu alias for C do { ... } while (condition);
-      • Example: karo { } jab_(i > 0);
+    UrduC Full Interactive Demo
+    ----------------------------
+    Yeh program UrduC ke tamam macros aur functions ka istemal karke
+    user ko string aur file handling ka demo deta hai.
 */
 
-int main(void) {
-    char naam[100]; /* char array (C-string buffer) to store name; capacity 100 chars */
+int main(void)
+{
+    likhde_line("===============================================");
+    likhde_line("           UrduC Interactive Demo");
+    likhde_line("===============================================\n");
 
-    likhde_line("Assalam-o-Alaikum! Ye humen c ko urdu mein kardiya hai!!."); /* print greeting with newline */
+    likhde_line("Assalam-o-Alaikum! UrduC main khush aamdeed.\n");
 
-    int adad = parhle("Koi number likho: "); /* prompt and read int → store in adad */
-    float ashari = parhle_float("Koi  ashariya likho: "); /* prompt and read float → store in ashari */
-    double baraAshari = parhle_double("ek lamba ashariya likho: "); /* prompt and read double → store in baraAshari */
-    parhle_str("Apna naam likho: ", naam, sizeof(naam)); /* prompt and read string into naam buffer */
+    // --- Basic Input & Conditional Demo ---
+    char naam[100];
+    int umar = parhle_int("Apni umar likho: ");
+    parhle("Apna naam likho: ", naam, sizeof(naam));
 
-    likhde_line(""); /* print empty line */
-    likhde_line("Aap ke data ke mutabiq:"); /* section title */
+    likhde("\nSalaam ");
+    likhde(naam);
+    likhde_line("!");
+    likhde("Aap ki umar hai: ");
+    likhde_int_line(umar);
 
-    likhde("Naam: "); /* label without newline */
-    likhde_line(naam); /* print name with newline */
-
-    likhde("number: "); /* label without newline */
-    likhde_int_line(adad); /* print int with newline */
-
-    likhde("ashariya: "); /* label without newline */
-    likhde_float_line(ashari); /* print float (2dp) with newline */
-
-    likhde("lamba wala ashiarya: "); /* label without newline */
-    likhde_double(baraAshari); /* print double (2dp) without newline */
-    likhde("\n"); /* manually add newline after previous print */
-
-    likhde_line(""); /* blank line */
-    likhde_line("ab kuch maths karte:"); /* section title */
-
-    likhde("number x 2 = "); /* label */
-    likhde_int_line(adad * 2); /* compute and print integer expression with newline */
-
-    likhde("ashariya / 2 = "); /* label */
-    likhde_float_line(ashari / 2.0f); /* compute and print float (2dp) with newline */
-
-    double jama = adad + (double)ashari + baraAshari; /* sum using double precision */
-    likhde("Teenon ka jama = "); /* label */
-    likhde_double(jama); /* print double without newline */
-    likhde("\n"); /* newline */
-
-    likhde_line("");
-    likhde_line("ab while loop ka re word dekhte hain!");
-    int ginti = parhle("ye batao ke kitna lamba loop chalana? : ");
-
-    jab_tak(ginti > 0) { 
-        likhde_int(ginti); 
-        likhde(" "); 
-        ginti--; 
-    }
-    likhde("\n"); 
-
-    likhde_line("");
-    likhde_line("ab bari hai do while loop ki, jo ek martaba lazmi chalta");
-    int num2 = parhle("kitna lamaba chalana? :");
-    int num = 0;
-
-    karo { 
-        likhde("num = ");
-        likhde_int(num);
-        likhde("\n");
-        num++; 
-    } jab_(num < num2); 
-
-    
-    likhde_line("");
-    likhde_line("agr / warna demo:");
-
-    int umar = parhle("Apni umar batao: "); 
-
-    agr (umar < 18) {
-        likhde_line("Aap abhi chhotay hain.");
-    }
-    warna_agr (umar >= 18 && umar < 60) {
+    agr (umar < 18)
+        likhde_line("Aap abhi chhotay hain!");
+    warna_agr (umar < 50)
         likhde_line("Aap jawan hain!");
-    }
-    warna {
-        likhde_line("Aap buzurg hain, lekin dil se jawan!");
+    warna
+        likhde_line("Aap tajurba kar hain!");
+
+    // --- STRING FUNCTIONS DEMO ---
+    likhde_line("\n--- STRING FUNCTIONS DEMO ---");
+
+    char s1[100], s2[100], result[200];
+    parhle("Pehli string likho: ", s1, sizeof(s1));
+    parhle("Dusri string likho: ", s2, sizeof(s2));
+
+    likhde_line("\nNakal (Copy) demo:");
+    nakal(result, s1);
+    likhde("Nakal ki gayi string: ");
+    likhde_line(result);
+
+    likhde_line("\nJodo (Concatenate) demo:");
+    jodo(result, " ");
+    jodo(result, s2);
+    likhde("Dono mil kar ban gayi: ");
+    likhde_line(result);
+
+    likhde_line("\nMuqabla (Compare) demo:");
+    int cmp = muqabla(s1, s2);
+    agr (cmp == 0)
+        likhde_line("Dono strings barabar hain!");
+    warna_agr (cmp < 0)
+        likhde_line("Pehli string chhoti hai.");
+    warna
+        likhde_line("Pehli string badi hai.");
+
+    likhde_line("\nLambai (Length) demo:");
+    likhde("Pehli string ki lambai: ");
+    likhde_int_line(lambai(s1));
+    likhde("Dusri string ki lambai: ");
+    likhde_int_line(lambai(s2));
+
+    // --- CHARACTER FUNCTIONS DEMO ---
+    likhde_line("\n--- CHARACTER FUNCTIONS DEMO ---");
+    char ch;
+    likhde("Koi ek character likho: ");
+    scanf(" %c", &ch);
+
+    likhde("Bara karo (toupper): ");
+    likhde_harf_line(bara_karo(ch));
+    likhde("Chhota karo (tolower): ");
+    likhde_harf_line(chhota_karo(ch));
+
+    agr (kya_harf(ch))
+        likhde_line("Yeh ek harf hai.");
+    warna_agr (kya_adad(ch))
+        likhde_line("Yeh ek adad hai.");
+    warna
+        likhde_line("Yeh na harf hai na adad.");
+
+    getchar(); // newline clear
+
+    // --- FILE HANDLING DEMO (User Interactive) ---
+    likhde_line("\n--- FILE HANDLING DEMO ---");
+
+    char filename[100];
+    parhle("File ka naam likho (e.g., mera_data.txt): ", filename, sizeof(filename));
+
+    FILE *meraFile = file_kholo(filename, "w");
+    agr (meraFile == NULL) {
+        likhde_line("File likhne mein masla aya!");
+        return 1;
     }
 
-    likhde_line("");
-    likhde_line("continue statemnet ka demo!!");
+    likhde_line("\nFile likhne ke liye kuch likho:");
+    char fileContent[300];
+    parhle("", fileContent, sizeof(fileContent));
 
-    for (int i = 1; i <= 5; i++) {
-        agr (i == 3) {
-            likhde_line("3 skip hogaya!!");
-            agay_chalo; 
+    line_likho(fileContent, meraFile);
+    file_band(meraFile);
+
+    likhde_line("\nFile likh di gayi!");
+
+    // --- APPEND DATA DEMO ---
+    likhde_line("\nKya aap file mein aur data jorna chahtay hain? (Y/N): ");
+    char choice;
+    scanf(" %c", &choice);
+    getchar(); // newline clear
+
+    agr (choice == 'Y' || choice == 'y') {
+        FILE *appendFile = file_kholo(filename, "a");
+        agr (appendFile == NULL) {
+            likhde_line("File append karte waqt masla aya!");
+            return 1;
         }
-        likhde("Number: ");
-        likhde_int_line(i);
+
+        likhde_line("File mein aur likho:");
+        char extraContent[300];
+        parhle("", extraContent, sizeof(extraContent));
+
+        line_likho("\n", appendFile);
+        line_likho(extraContent, appendFile);
+        file_band(appendFile);
+
+        likhde_line("Naya data successfully jor diya gaya!");
     }
 
-    likhde_line("");
-    likhde_line("switch case ke demo ki bari:");
-
-    int din = parhle("1 se 3 tak koi number likho , (1 = peer, 2 = mangal, 3 = budh): ");
-
-    badal (din) {
-        surat 1:
-            likhde_line("Aaj peer hai!");
-            ruk_jao;
-        surat 2:
-            likhde_line("Aaj mangal hai!");
-            ruk_jao;
-        surat 3:
-            likhde_line("Aaj budh` hai!");
-            ruk_jao;
-        warna_sab:
-            likhde_line("Ghalat number!");
-            ruk_jao;
+    // --- READ FINAL FILE CONTENT ---
+    likhde_line("\nFile ka final content padhte hain:");
+    FILE *readFile = file_kholo(filename, "r");
+    agr (readFile == NULL) {
+        likhde_line("File padhne mein masla aya!");
+        return 1;
     }
 
-    likhde_line(""); 
-    likhde_line("Shukriya! Allah Hafiz."); 
+    char line[300];
+    jab_tak (line_lo(line, sizeof(line), readFile) != NULL) {
+        likhde(line);
+    }
+    file_band(readFile);
 
-    return 0; 
+    // --- SIMPLE LOOP DEMO ---
+    likhde_line("\n\n--- LOOP DEMO ---");
+    int count = parhle_int("Kitni martaba likhna hai 'Pakistan Zindabad'? : ");
+    int i = 0;
+
+    jab_tak (i < count) {
+        likhde_line("Pakistan Zindabad!");
+        i++;
+    }
+
+    likhde_line("\nDemo mukammal hogaya!");
+    likhde_line("Shukriya! Allah Hafiz.");
+
+    return 0;
 }
+
 
 
