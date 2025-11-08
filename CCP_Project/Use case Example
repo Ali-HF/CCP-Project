@@ -1,11 +1,5 @@
 #include <urdu.h>
 
-/*
-    UrduC Full Interactive Demo
-    ----------------------------
-    Yeh program UrduC ke tamam macros aur functions ka istemal karke
-    user ko string aur file handling ka demo deta hai.
-*/
 
 int main(void)
 {
@@ -13,14 +7,13 @@ int main(void)
     likhde_line("           UrduC Interactive Demo");
     likhde_line("===============================================\n");
 
-    likhde_line("Assalam-o-Alaikum! UrduC main khush aamdeed.\n");
+    likhde_line("Assalam-o-Alaikum! \n");
 
-    // --- Basic Input & Conditional Demo ---
     char naam[100];
     int umar = parhle_int("Apni umar likho: ");
     parhle("Apna naam likho: ", naam, sizeof(naam));
 
-    likhde("\nSalaam ");
+    likhde("\kese ho  ");
     likhde(naam);
     likhde_line("!");
     likhde("Aap ki umar hai: ");
@@ -29,11 +22,10 @@ int main(void)
     agr (umar < 18)
         likhde_line("Aap abhi chhotay hain!");
     warna_agr (umar < 50)
-        likhde_line("Aap jawan hain!");
+        likhde_line("Aap ab barey hogai ho!");
     warna
-        likhde_line("Aap tajurba kar hain!");
+        likhde_line("Aap to bohat barey hain!");
 
-    // --- STRING FUNCTIONS DEMO ---
     likhde_line("\n--- STRING FUNCTIONS DEMO ---");
 
     char s1[100], s2[100], result[200];
@@ -42,13 +34,13 @@ int main(void)
 
     likhde_line("\nNakal (Copy) demo:");
     nakal(result, s1);
-    likhde("Nakal ki gayi string: ");
+    likhde("humne pehli string ko dusri mein daldiya: ");
     likhde_line(result);
 
     likhde_line("\nJodo (Concatenate) demo:");
     jodo(result, " ");
     jodo(result, s2);
-    likhde("Dono mil kar ban gayi: ");
+    likhde("Dono strings mil kar ban gayi: ");
     likhde_line(result);
 
     likhde_line("\nMuqabla (Compare) demo:");
@@ -78,15 +70,14 @@ int main(void)
     likhde_harf_line(chhota_karo(ch));
 
     agr (kya_harf(ch))
-        likhde_line("Yeh ek harf hai.");
+        likhde_line("Yeh ek huroof hai.");
     warna_agr (kya_adad(ch))
-        likhde_line("Yeh ek adad hai.");
+        likhde_line("Yeh ek number hai.");
     warna
-        likhde_line("Yeh na harf hai na adad.");
+        likhde_line("Yeh na hi huroof hai na hi koi number.");
 
-    getchar(); // newline clear
+    getchar(); 
 
-    // --- FILE HANDLING DEMO (User Interactive) ---
     likhde_line("\n--- FILE HANDLING DEMO ---");
 
     char filename[100];
@@ -98,7 +89,7 @@ int main(void)
         return 1;
     }
 
-    likhde_line("\nFile likhne ke liye kuch likho:");
+    likhde_line("\nFile mein kuch likho:");
     char fileContent[300];
     parhle("", fileContent, sizeof(fileContent));
 
@@ -107,11 +98,10 @@ int main(void)
 
     likhde_line("\nFile likh di gayi!");
 
-    // --- APPEND DATA DEMO ---
     likhde_line("\nKya aap file mein aur data jorna chahtay hain? (Y/N): ");
     char choice;
     scanf(" %c", &choice);
-    getchar(); // newline clear
+    getchar(); 
 
     agr (choice == 'Y' || choice == 'y') {
         FILE *appendFile = file_kholo(filename, "a");
@@ -131,7 +121,6 @@ int main(void)
         likhde_line("Naya data successfully jor diya gaya!");
     }
 
-    // --- READ FINAL FILE CONTENT ---
     likhde_line("\nFile ka final content padhte hain:");
     FILE *readFile = file_kholo(filename, "r");
     agr (readFile == NULL) {
@@ -145,7 +134,6 @@ int main(void)
     }
     file_band(readFile);
 
-    // --- SIMPLE LOOP DEMO ---
     likhde_line("\n\n--- LOOP DEMO ---");
     int count = parhle_int("Kitni martaba likhna hai 'Pakistan Zindabad'? : ");
     int i = 0;
@@ -160,6 +148,5 @@ int main(void)
 
     return 0;
 }
-
 
 
