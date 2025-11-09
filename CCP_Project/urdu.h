@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 
 int parhle_int(const char *prompt) {
     int x;
@@ -149,8 +150,33 @@ int lambai(const char* str) {
 #define kya_harf(ch) isalpha(ch)
 #define kya_harfya_adad(ch) isalnum(ch)
 
+/* Time functions */
+void abhi_ka_time(char *buffer, int size) {
+    time_t abhi = time(NULL);
+    struct tm *local = localtime(&abhi);
+    strftime(buffer, size, "%c", local);
+}
+
+void aaj_ki_tareekh(char *buffer, int size) {
+    time_t abhi = time(NULL);
+    struct tm *local = localtime(&abhi);
+    strftime(buffer, size, "%d-%m-%Y", local);
+}
+
+void abhi_ka_wakt(char *buffer, int size) {
+    time_t abhi = time(NULL);
+    struct tm *local = localtime(&abhi);
+    strftime(buffer, size, "%H:%M:%S", local);
+}
+
+void ruk_jana(int seconds) {
+    time_t start = time(NULL);
+    while (difftime(time(NULL), start) < seconds);
+}
+
+void likhde_abhi_ka_time() {
+    time_t abhi = time(NULL);
+    printf("%s\n", ctime(&abhi));
+}
+
 #endif
-
-
-
-
