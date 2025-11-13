@@ -16,11 +16,12 @@ gcc demo.c -o demo
 
 
 
-Contributors:
-Name	         Role
-Ali Hasan	     Header File & Report
-Hasan Shahir	 Demo & Proposal & video
-Muneeb Rehman	 Header file & presentation
+| **Name**          | **Role**                   |
+| ----------------- | -------------------------- |
+| **Ali Hasan**     | Header File & Report       |
+| **Hasan Shahir**  | Demo, Proposal & Video     |
+| **Muneeb Rehman** | Header File & Presentation |
+
 
 
 
