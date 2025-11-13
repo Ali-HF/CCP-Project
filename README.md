@@ -18,8 +18,8 @@ gcc demo.c -o demo
 
 | **Name**          | **Role**                   |
 | ----------------- | -------------------------- |
-| **Ali Hasan**     | Header File & Report       |
-| **Hasan Shahir**  | Demo, Proposal & Video     |
+| **Ali Hasan**     | Header File, Report & Demo |
+| **Hasan Shahir**  | Header File, Proposal & Video |
 | **Muneeb Rehman** | Header File & Presentation |
 
 
