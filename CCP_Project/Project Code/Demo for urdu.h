@@ -1,19 +1,34 @@
 #include <urdu.h>
 
-
 int main(void)
 {
-    likhde_line("===============================================");
-    likhde_line("           UrduC Interactive Demo");
-    likhde_line("===============================================\n");
-
     likhde_line("Assalam-o-Alaikum! \n");
 
     char naam[100];
-    int umar = parhle_int("Apni umar likho: ");
-    parhle("Apna naam likho: ", naam, sizeof(naam));
+    int umar;
+    char input_buf[100]; 
 
-    likhde("\kese ho  ");
+    while (1) {
+        parhle("Apni umar likho: ", input_buf, sizeof(input_buf));
+        char extra;
+        if (sscanf(input_buf, "%d %c", &umar, &extra) == 1) {
+            if (umar >= 0 && umar <= 150) 
+                break;
+            else 
+                likhde_line("Galat umar! Sirf 0 se 150 ke darmiyan likho.");
+        } else {
+            likhde_line("Sirf number likho! Dobara koshish karo.");
+        }
+    }
+
+    while (1) {
+        parhle("Apna naam likho: ", naam, sizeof(naam));
+        if (lambai(naam) > 0) 
+            break;
+        likhde_line("Naam khali nahi hosakta. Dobara likho.");
+    }
+
+    likhde("kese ho  ");
     likhde(naam);
     likhde_line("!");
     likhde("Aap ki umar hai: ");
@@ -29,8 +44,20 @@ int main(void)
     likhde_line("\n--- STRING FUNCTIONS DEMO ---");
 
     char s1[100], s2[100], result[200];
-    parhle("Pehli string likho: ", s1, sizeof(s1));
-    parhle("Dusri string likho: ", s2, sizeof(s2));
+
+    while (1) {
+        parhle("Pehli string likho: ", s1, sizeof(s1));
+        if (lambai(s1) > 0) 
+            break;
+        likhde_line("String khali nahi hosakti.");
+    }
+
+    while (1) {
+        parhle("Dusri string likho: ", s2, sizeof(s2));
+        if (lambai(s2) > 0) 
+            break;
+        likhde_line("String khali nahi hosakti.");
+    }
 
     likhde_line("\nNakal (Copy) demo:");
     nakal(result, s1);
@@ -58,16 +85,24 @@ int main(void)
     likhde("Dusri string ki lambai: ");
     likhde_int_line(lambai(s2));
 
-    // --- CHARACTER FUNCTIONS DEMO ---
     likhde_line("\n--- CHARACTER FUNCTIONS DEMO ---");
     char ch;
-    likhde("Koi ek character likho: ");
-    scanf(" %c", &ch);
+    int char_ok = 0;
+    while (!char_ok) {
+        likhde("Koi ek character likho: ");
+        int fields = scanf(" %c", &ch);
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+        if (fields == 1)
+            char_ok = 1;
+        else
+            likhde_line("Galat input! Sirf ek character likho.");
+    }
 
     likhde("Bara karo (toupper): ");
     likhde_harf_line(bara_karo(ch));
     likhde("Chhota karo (tolower): ");
-    likhde_harf_line(chhota_karo(ch));
+    likhde_harf_line(chhota_karo(ch)); 
 
     agr (kya_harf(ch))
         likhde_line("Yeh ek huroof hai.");
@@ -76,12 +111,15 @@ int main(void)
     warna
         likhde_line("Yeh na hi huroof hai na hi koi number.");
 
-    getchar(); 
-
     likhde_line("\n--- FILE HANDLING DEMO ---");
 
     char filename[100];
-    parhle("File ka naam likho (e.g., mera_data.txt): ", filename, sizeof(filename));
+    while (1) {
+        parhle("File ka naam likho (e.g., mera_data.txt): ", filename, sizeof(filename));
+        if (lambai(filename) > 0) 
+            break;
+        likhde_line("File ka naam khali nahi hosakta!");
+    }
 
     FILE *meraFile = file_kholo(filename, "w");
     agr (meraFile == NULL) {
@@ -91,19 +129,32 @@ int main(void)
 
     likhde_line("\nFile mein kuch likho:");
     char fileContent[300];
-    parhle("", fileContent, sizeof(fileContent));
+    while (1) {
+        parhle("", fileContent, sizeof(fileContent));
+        if (lambai(fileContent) > 0) 
+            break;
+        likhde_line("Kuch likho! Text khali nahi hosakta.");
+    }
 
     line_likho(fileContent, meraFile);
     file_band(meraFile);
 
     likhde_line("\nFile likh di gayi!");
 
-    likhde_line("\nKya aap file mein aur data jorna chahtay hain? (Y/N): ");
     char choice;
-    scanf(" %c", &choice);
-    getchar(); 
+    int yn_ok = 0;
+    while (!yn_ok) {
+        likhde_line("\nKya aap file mein aur data jorna chahtay hain? (Y/N): ");
+        int n = scanf(" %c", &choice);
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+        if (n == 1 && (choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n'))
+            yn_ok = 1;
+        else
+            likhde_line("Galat jawab! Sirf Y ya N likho.");
+    }
 
-    agr (choice == 'Y' || choice == 'y') {
+    if (choice == 'Y' || choice == 'y') {
         FILE *appendFile = file_kholo(filename, "a");
         agr (appendFile == NULL) {
             likhde_line("File append karte waqt masla aya!");
@@ -112,7 +163,12 @@ int main(void)
 
         likhde_line("File mein aur likho:");
         char extraContent[300];
-        parhle("", extraContent, sizeof(extraContent));
+        while (1) {
+            parhle("", extraContent, sizeof(extraContent));
+            if (lambai(extraContent) > 0) 
+                break;
+            likhde_line("Kuch likho! Text khali nahi hosakta.");
+        }
 
         line_likho("\n", appendFile);
         line_likho(extraContent, appendFile);
@@ -135,9 +191,21 @@ int main(void)
     file_band(readFile);
 
     likhde_line("\n\n--- LOOP DEMO ---");
-    int count = parhle_int("Kitni martaba likhna hai 'Pakistan Zindabad'? : ");
-    int i = 0;
+    int count;
+    while (1) {
+        parhle("Kitni martaba likhna hai 'Pakistan Zindabad'? : ", input_buf, sizeof(input_buf));
+        char extra;
+        if (sscanf(input_buf, "%d %c", &count, &extra) == 1) {
+            if (count >= 1 && count <= 1000) 
+                break;
+            else 
+                likhde_line("Kam az kam 1 aur ziyada se ziyada 1000 dafa likh sakte hain.");
+        } else {
+            likhde_line("Sirf number likho! Dobara koshish karo.");
+        }
+    }
 
+    int i = 0;
     jab_tak (i < count) {
         likhde_line("Pakistan Zindabad!");
         i++;
@@ -148,5 +216,3 @@ int main(void)
 
     return 0;
 }
-
-
