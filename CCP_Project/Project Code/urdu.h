@@ -2,11 +2,10 @@
 #define URDU_H
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
-#include <stddef.h> // For size_t
+#include <stddef.h> 
 
 /* --- Input/Output Functions (Parhle/Likhde) --- */
 
@@ -33,7 +32,7 @@ float parhle_float(const char *prompt) {
     printf("%s", prompt);
     scanf("%f", &x);
     int c;
-    while ((c = getchar()) != '\n' && c != EOF); // Clear buffer
+    while ((c = getchar()) != '\n' && c != EOF); 
     return x;
 }
 
@@ -42,7 +41,7 @@ double parhle_double(const char *prompt) {
     printf("%s", prompt);
     scanf("%lf", &x);
     int c;
-    while ((c = getchar()) != '\n' && c != EOF); // Clear buffer
+    while ((c = getchar()) != '\n' && c != EOF); 
     return x;
 }
 
@@ -288,3 +287,4 @@ void likhde_abhi_ka_time() {
 #define line_likho(str, stream) fputs(str, stream)
 
 #endif // URDU_H
+
