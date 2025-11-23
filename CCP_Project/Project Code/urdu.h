@@ -272,7 +272,7 @@ void likhde_abhi_ka_time() {
 /* --- Loop Macros --- */
 #define jab_tak(condition) while (condition)
 #define karo do
-#define jab_(condition) while (condition)
+#define jab(condition) while (condition)
 
 /* --- Flow Control Macros --- */
 #define agay_chalo continue
@@ -287,4 +287,5 @@ void likhde_abhi_ka_time() {
 #define line_likho(str, stream) fputs(str, stream)
 
 #endif // URDU_H
+
 
