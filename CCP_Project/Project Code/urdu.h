@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-#include <time.h>
 #include <stddef.h> 
 
 /* --- Input/Output Functions (Parhle/Likhde) --- */
@@ -198,34 +197,7 @@ char* chhota_karde(char* str) {
 }
 
 
-/* --- Time Functions --- */
-void abhi_ka_time(char *buffer, int size) {
-    time_t abhi = time(NULL);
-    struct tm *local = localtime(&abhi);
-    strftime(buffer, size, "%c", local);
-}
 
-void aaj_ki_tareekh(char *buffer, int size) {
-    time_t abhi = time(NULL);
-    struct tm *local = localtime(&abhi);
-    strftime(buffer, size, "%d-%m-%Y", local);
-}
-
-void abhi_ka_wakt(char *buffer, int size) {
-    time_t abhi = time(NULL);
-    struct tm *local = localtime(&abhi);
-    strftime(buffer, size, "%H:%M:%S", local);
-}
-
-void ruk_jana(int seconds) {
-    time_t start = time(NULL);
-    while (difftime(time(NULL), start) < seconds);
-}
-
-void likhde_abhi_ka_time() {
-    time_t abhi = time(NULL);
-    printf("%s", ctime(&abhi)); // ctime already includes a newline
-}
 
 /* --- Character Functions (Macros) --- */
 #define bara_karo(ch) toupper(ch)
@@ -262,6 +234,7 @@ void likhde_abhi_ka_time() {
 #define line_likho(str, stream) fputs(str, stream)
 
 #endif // URDU_H
+
 
 
 
