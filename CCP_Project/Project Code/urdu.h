@@ -177,31 +177,6 @@ char* hissa_nakal(char* dest, const char* src, size_t n) {
     return dest;
 }
 
-// Lafz Dhundo (Find Substring) - Equivalent to strstr
-char* lafz_dhundo(const char* haystack, const char* needle) {
-    if (*needle == '\0') {
-        return (char*)haystack;
-    }
-
-    while (*haystack != '\0') {
-        const char* h = haystack;
-        const char* n = needle;
-        
-        while (*n != '\0' && *h == *n) {
-            h++;
-            n++;
-        }
-        
-        if (*n == '\0') {
-            return (char*)haystack;
-        }
-
-        haystack++;
-    }
-
-    return NULL;
-}
-
 // Bara Karde (Make Upper) - Converts all alphabetic characters in 'str' to uppercase in place.
 char* bara_karde(char* str) {
     char* ptr = str;
@@ -287,5 +262,6 @@ void likhde_abhi_ka_time() {
 #define line_likho(str, stream) fputs(str, stream)
 
 #endif // URDU_H
+
 
 
